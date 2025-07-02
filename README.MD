@@ -18,14 +18,15 @@ This project implements real-time object detection using **YOLOv4** and **OpenCV
 
 Object-Detection/
 │
-├── app.py # Flask app with object detection
-├── yolov4.cfg # YOLOv4 config
-├── coco.names # COCO class labels
-├── requirements.txt # Python dependencies
-├── download_weights.py # Downloads yolov4.weights if missing
-├── .render.yaml # Render deployment config
-├── .gitignore # Ignores yolov4.weights etc.
-└── README.md # You're here
+├── app.py                # Flask app with object detection
+├── yolov4.cfg            # YOLOv4 config
+├── coco.names            # COCO class labels
+├── requirements.txt      # Python dependencies
+├── download_weights.py   # Downloads yolov4.weights if missing
+├── .render.yaml          # Render deployment config
+├── .gitignore            # Ignores yolov4.weights etc.
+└── README.md             # You're here
+
 ---
 
 ## 🔧 Installation (Local)
