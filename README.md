@@ -1,18 +1,17 @@
 
-# 🧠 Real-Time Object Detection using YOLOv4 + Flask
+# 🧠 Real-Time Object Detection using YOLOv4 + OpenCV (Local Version)
 
-This project implements real-time object detection using **YOLOv4** and **OpenCV**, served via a lightweight **Flask** web app. It downloads the YOLOv4 weights at runtime and allows object detection via webcam, IP camera, or video input. Perfect for deployment on platforms like **Render**.
+This project implements **real-time object detection using YOLOv4** and **OpenCV**, running completely locally via your webcam. It includes a utility script to **auto-download YOLOv4 weights** and displays detection results in a live OpenCV window.
 
 ---
 
 ## 🔍 Features
 
 - ✅ Real-time object detection using YOLOv4 (Darknet)
-- 🧠 Uses OpenCV's DNN module (no Darknet compilation needed)
-- 🔁 Auto-downloads `yolov4.weights` at runtime
-- 🌐 Flask app for simple deployment
-- 🎥 Supports webcam, IP cam, or local video file
-- 🚀 Ready for cloud deployment (Render.com)
+- 🧠 Uses OpenCV's DNN module (no Darknet compilation or Flask needed)
+- 🔁 Auto-downloads `yolov4.weights` if not present
+- 💻 Runs entirely locally using your webcam
+- 🚫 No web deployment, no Flask, no external servers
 
 ---
 
@@ -20,12 +19,12 @@ This project implements real-time object detection using **YOLOv4** and **OpenCV
 
 ```
 Object-Detection/
-├── app.py                # Flask application with YOLO integration
+├── app.py                # Main object detection script (local OpenCV)
 ├── coco.names            # COCO class labels
 ├── yolov4.cfg            # YOLOv4 model configuration
-├── requirements.txt      # Python dependencies
+├── yolov4.weights        # YOLOv4 pre-trained weights (auto-downloaded)
 ├── download_weights.py   # Script to auto-download yolov4.weights
-├── .render.yaml          # Configuration for Render deployment
+├── requirements.txt      # Python dependencies
 ├── .gitignore            # Prevents large/binary files from being tracked
 └── README.md             # Project documentation (this file)
 ```
@@ -47,55 +46,38 @@ cd Object-Detection
 pip install -r requirements.txt
 ```
 
-### 3. Download YOLOv4 weights (if not already downloaded)
+### 3. Download YOLOv4 weights (if not already present)
 
 ```bash
 python download_weights.py
 ```
 
-### 4. Run the app
+### 4. Run the object detection app
 
 ```bash
 python app.py
 ```
 
+> 💡 The window will automatically close when you press `q` or manually close it.
+
 ---
 
 ## 🎥 Camera Input Options
 
-You can modify `cv2.VideoCapture()` in `app.py`:
+You can modify `cv2.VideoCapture()` in `app.py` to use different sources:
 
 ```python
-# Webcam
+# Use default webcam
 cv2.VideoCapture(0)
 
-# IP camera
+# IP camera (replace with your IP)
 cv2.VideoCapture("http://your-ip-address:port/video")
 
-# Video file
-cv2.VideoCapture("sample_video.mp4")
+# Pre-recorded video file
+cv2.VideoCapture("your_video.mp4")
 ```
 
 ---
-
-## 🌐 Deployment on Render
-
-### 1. Push your repo to GitHub (excluding `yolov4.weights`)
-
-### 2. Go to [https://render.com](https://render.com) and create a new **Web Service**
-
-Use the following settings:
-
-| Setting           | Value                                                           |
-|-------------------|-----------------------------------------------------------------|
-| **Environment**    | Python                                                         |
-| **Build Command**  | `pip install -r requirements.txt && python download_weights.py` |
-| **Start Command**  | `python app.py`                                                |
-
-Once deployed, Render will give you a public URL to test your app.
-
----
-
 
 ## 🙋 Author
 
@@ -107,5 +89,3 @@ GitHub: [@Mayank-01x](https://github.com/Mayank-01x/Object-Detection)
 ## 📄 License
 
 This project is licensed under the **MIT License**.
-
----
