@@ -96,17 +96,6 @@ Once deployed, Render will give you a public URL to test your app.
 
 ---
 
-## 🖼️ Sample Output
-
-> ![Example Detection](https://pjreddie.com/media/image/yolov3/yolov3.jpg)
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License**.
-
----
 
 ## 🙋 Author
 
@@ -115,9 +104,8 @@ GitHub: [@Mayank-01x](https://github.com/Mayank-01x/Object-Detection)
 
 ---
 
-## ✅ Future Improvements
+## 📄 License
 
-- [ ] Stream live video in browser
-- [ ] Add YOLOv4-Tiny support
-- [ ] UI for uploading video/image files
-- [ ] Add logging and live FPS monitoring
+This project is licensed under the **MIT License**.
+
+---
